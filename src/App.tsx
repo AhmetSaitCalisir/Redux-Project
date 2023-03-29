@@ -1,30 +1,14 @@
-import { useEffect, useState } from "react";
-import { IProduct } from "./models/product";
-import { productService } from "./services/product.service";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const [products, setProducts] = useState<IProduct[]>([]);
-  useEffect(() => {
-    productService.getAll().then((data) => {
-      console.log(data.data);
-      setProducts(data.data);
-    });
+  const products = useSelector((state: any) => state.products.products);
+  const brands = useSelector((state: any) => state.products.brands);
+  const models = useSelector((state: any) => state.products.models);
 
-    return () => {};
-  }, []);
-
-  return (
-    <div>
-      {products.map((product, index) => (
-        <div key={index}>
-          <p>{product.name}</p>
-          <p>{product.brand}</p>
-          <p>{product.model}</p>
-          <hr />
-        </div>
-      ))}
-    </div>
-  );
+  console.log(products);
+  console.log(brands);
+  console.log(models);
+  return <div></div>;
 };
 
 export default App;
