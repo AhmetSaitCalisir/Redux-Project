@@ -1,0 +1,17 @@
+.flex-center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-cards {
+  margin-left: auto !important;
+}
+
+.search-input {
+  border-radius: 0 !important;
+  max-width: 350px !important;
+}
