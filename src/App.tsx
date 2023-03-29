@@ -1,14 +1,7 @@
-import { useSelector } from "react-redux";
+import Navigation from "./Navigation";
 
 const App = () => {
-  const products = useSelector((state: any) => state.products.products);
-  const brands = useSelector((state: any) => state.products.brands);
-  const models = useSelector((state: any) => state.products.models);
-
-  console.log(products);
-  console.log(brands);
-  console.log(models);
-  return <div></div>;
+  return <Navigation />;
 };
 
 export default App;
