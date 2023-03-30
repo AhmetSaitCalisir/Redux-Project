@@ -25,3 +25,36 @@
 .filter-label {
   color: gray;
 }
+
+.product-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.product-item {
+  flex: 1;
+  width: 100%;
+  margin: 1rem 5px;
+  justify-content: center;
+  display: flex;
+}
+
+.product-card {
+  max-width: 200px;
+  min-width: 100px;
+}
+
+.card-image {
+  width: -webkit-fill-available;
+}
+
+.card-price {
+  color: #2a59fe;
+  padding-top: 5px;
+}
+
+.card-button {
+}
