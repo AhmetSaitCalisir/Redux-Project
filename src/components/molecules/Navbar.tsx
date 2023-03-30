@@ -11,15 +11,20 @@ const Navbar = () => {
       style={{ backgroundColor: "#2A59FE" }}
     >
       <div className="container">
-        <a
-          className="navbar-brand"
-          href="javascript:void(0)"
-          style={{ paddingRight: "10%" }}
-          onClick={() => navigate("/")}
-        >
-          Reduxration
-        </a>
+        <div className="row">
+          <div className="col">
+            <a
+              className="navbar-brand"
+              href="javascript:void(0)"
+              style={{ paddingRight: "10%" }}
+              onClick={() => navigate("/")}
+            >
+              Reduxration
+            </a>
+          </div>
+        </div>
         <SearchInput />
+
         <button
           className="navbar-toggler"
           type="button"

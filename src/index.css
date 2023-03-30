@@ -73,3 +73,23 @@ body {
 .card-name {
   height: 50px;
 }
+
+.detail-card {
+  margin: 1rem 0rem;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+}
+
+.detail-price {
+  color: #2a59fe;
+  margin-bottom: 40px;
+}
+
+.detail-button {
+  margin-bottom: 15px;
+}
+
+.detail-img {
+  width: -webkit-fill-available;
+}

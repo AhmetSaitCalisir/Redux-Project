@@ -36,7 +36,31 @@ const DetailPage = () => {
     return () => {};
   }, []);
 
-  return <div>Detail Page of {id}</div>;
+  return (
+    <div className="detail-card">
+      <div className="row">
+        <div className="col">
+          <img src={product.image} className="detail-img" />
+        </div>
+        <div className="col">
+          <h1>{product.name}</h1>
+          <h4 className="detail-price">{product.price}₺</h4>
+          <div className="d-grid gap-2">
+            <button
+              className="btn btn-primary detail-button"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              Add to Cart
+            </button>
+          </div>
+          <p>{product.description}</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default DetailPage;
