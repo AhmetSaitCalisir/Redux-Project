@@ -26,7 +26,7 @@ const HomePage = () => {
 
   useEffect(() => {
     paginate(1);
-
+    setStep(1);
     return () => {};
   }, [allProducts]);
 

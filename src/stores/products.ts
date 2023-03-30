@@ -10,8 +10,8 @@ const products = createSlice({
       (a, b) =>
         new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     ),
-    brands: [...new Set(productsData.map((product) => product.brand))],
-    models: [...new Set(productsData.map((product) => product.model))],
+    brands: [...new Set(productsData.map((product) => product.brand))].sort(),
+    models: [...new Set(productsData.map((product) => product.model))].sort(),
   },
   reducers: {
     clearFilters: (state) => {
@@ -25,7 +25,7 @@ const products = createSlice({
       );
       state.models = [
         ...new Set(state.products.map((product) => product.model)),
-      ];
+      ].sort();
     },
     modelFilter: (state, action) => {
       const filters: string[] = action.payload;
