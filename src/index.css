@@ -15,3 +15,13 @@
   border-radius: 0 !important;
   max-width: 350px !important;
 }
+
+.filter-card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  max-height: 200px;
+  overflow: auto;
+}
+.filter-label {
+  color: gray;
+}

@@ -14,7 +14,7 @@ const Navbar = () => {
           href="javascript:void(0)"
           style={{ paddingRight: "10%" }}
         >
-          Eteration
+          Reduxration
         </a>
         <SearchInput />
         <button
