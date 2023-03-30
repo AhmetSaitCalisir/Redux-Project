@@ -7,7 +7,12 @@ const AppLayout = () => {
     <Suspense fallback={"Loading..."}>
       <Navbar />
       <div className="container">
-        <Outlet />
+        <div className="row">
+          <div className="col">
+            <Outlet />
+          </div>
+          <div className="col-2">Basket</div>
+        </div>
       </div>
     </Suspense>
   );

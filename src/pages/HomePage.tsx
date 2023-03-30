@@ -34,7 +34,7 @@ const HomePage = () => {
 
   return (
     <div className="row">
-      <div className="col-2">
+      <div className="col-3">
         <SortCard />
         <BrandFilterCard />
         <ModelFilterCard />
@@ -51,7 +51,6 @@ const HomePage = () => {
           </div>
         )}
       </div>
-      <div className="col-2 ">BUSKET</div>
     </div>
   );
 };
