@@ -6,7 +6,10 @@ const productsData = await productService.getAll();
 const products = createSlice({
   name: "products",
   initialState: {
-    products: productsData,
+    products: productsData.sort(
+      (a, b) =>
+        new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    ),
     brands: [...new Set(productsData.map((product) => product.brand))],
     models: [...new Set(productsData.map((product) => product.model))],
   },
@@ -30,9 +33,34 @@ const products = createSlice({
         filters.includes(product.model)
       );
     },
+    sort: (state, action) => {
+      switch (action.payload) {
+        case "old":
+          state.products = state.products.sort(
+            (a, b) =>
+              new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+          );
+          break;
+        case "new":
+          state.products = state.products.sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+          break;
+        case "high":
+          state.products = state.products.sort((a, b) => +b.price - +a.price);
+          break;
+        case "low":
+          state.products = state.products.sort((a, b) => +a.price - +b.price);
+          break;
+        default:
+          break;
+      }
+    },
   },
 });
 
-export const { brandFilter, clearFilters, modelFilter } = products.actions;
+export const { brandFilter, clearFilters, modelFilter, sort } =
+  products.actions;
 
 export default products.reducer;
