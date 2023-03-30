@@ -45,6 +45,12 @@
 .product-card {
   max-width: 200px;
   min-width: 100px;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  scale: 1.01;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .card-image {
@@ -59,8 +65,8 @@
 .card-button {
 }
 
-#root {
-  background-color: whitesmoke;
+body {
+  background-color: whitesmoke !important;
   padding-bottom: 200px;
 }
 

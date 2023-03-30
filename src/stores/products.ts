@@ -23,7 +23,6 @@ const products = createSlice({
       state.models = [...new Set(productsData.map((product) => product.model))];
     },
     filter: (state, action) => {
-      console.log(action.payload);
       state.brandFilters =
         action.payload.brandFilters != undefined
           ? action.payload.brandFilters

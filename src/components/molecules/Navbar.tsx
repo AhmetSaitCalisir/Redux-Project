@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import Basket from "../atoms/Basket";
 import SearchInput from "../atoms/SearchInput";
 import User from "../atoms/User";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark"
@@ -13,6 +15,7 @@ const Navbar = () => {
           className="navbar-brand"
           href="javascript:void(0)"
           style={{ paddingRight: "10%" }}
+          onClick={() => navigate("/")}
         >
           Reduxration
         </a>

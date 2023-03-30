@@ -28,6 +28,15 @@ const BrandFilterCard = () => {
       <div className="filter-label mt-3">Brands</div>
       <div className="filter-card">
         <FormGroup>
+          {checked.map((brand, index) => (
+            <FormControlLabel
+              key={index}
+              control={<Checkbox checked={checked.includes(brand)} />}
+              label={brand}
+              onChange={(e, c) => handleCheckboxOnChange(brand, c)}
+            />
+          ))}
+          {checked.length > 0 && <hr />}
           {brands.map((brand, index) => (
             <FormControlLabel
               key={index}
