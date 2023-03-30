@@ -40,7 +40,11 @@ const HomePage = () => {
         <ModelFilterCard />
       </div>
       <div className="col">
-        <ProductList products={products} />
+        {products.length > 0 ? (
+          <ProductList products={products} />
+        ) : (
+          <p>Opps.. There is no product</p>
+        )}
         {stepCount > 1 && (
           <div className="d-flex justify-content-center">
             <Pagination count={stepCount} page={step} onChange={handleChange} />

@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const productsData = await productService.getAll();
 
+const initialFilters: string[] = [];
+
 const products = createSlice({
   name: "products",
   initialState: {
@@ -12,26 +14,46 @@ const products = createSlice({
     ),
     brands: [...new Set(productsData.map((product) => product.brand))].sort(),
     models: [...new Set(productsData.map((product) => product.model))].sort(),
+    brandFilters: initialFilters,
+    modelFilters: initialFilters,
   },
   reducers: {
     clearFilters: (state) => {
       state.products = productsData;
       state.models = [...new Set(productsData.map((product) => product.model))];
     },
-    brandFilter: (state, action) => {
-      const filters: string[] = action.payload;
-      state.products = productsData.filter((product) =>
-        filters.includes(product.brand)
-      );
+    filter: (state, action) => {
+      console.log(action.payload);
+      state.brandFilters =
+        action.payload.brandFilters != undefined
+          ? action.payload.brandFilters
+          : state.brandFilters;
+
+      state.modelFilters =
+        action.payload.modelFilters != undefined
+          ? action.payload.modelFilters
+          : state.modelFilters;
+
+      state.products = productsData.filter((product) => {
+        let filtered = true;
+        if (state.brandFilters.length > 0) {
+          filtered = filtered && state.brandFilters.includes(product.brand);
+        }
+        if (state.modelFilters.length > 0) {
+          filtered = filtered && state.modelFilters.includes(product.model);
+        }
+        return filtered;
+      });
+      const brandFiltered = productsData.filter((product) => {
+        let filtered = true;
+        if (state.brandFilters.length > 0) {
+          filtered = filtered && state.brandFilters.includes(product.brand);
+        }
+        return filtered;
+      });
       state.models = [
-        ...new Set(state.products.map((product) => product.model)),
+        ...new Set(brandFiltered.map((product) => product.model)),
       ].sort();
-    },
-    modelFilter: (state, action) => {
-      const filters: string[] = action.payload;
-      state.products = state.products.filter((product) =>
-        filters.includes(product.model)
-      );
     },
     sort: (state, action) => {
       switch (action.payload) {
@@ -60,7 +82,6 @@ const products = createSlice({
   },
 });
 
-export const { brandFilter, clearFilters, modelFilter, sort } =
-  products.actions;
+export const { clearFilters, filter, sort } = products.actions;
 
 export default products.reducer;

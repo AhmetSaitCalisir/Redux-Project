@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { brandFilter, clearFilters } from "../../stores/products";
+import { filter } from "../../stores/products";
 
 const BrandFilterCard = () => {
   const brands: string[] = useSelector((state: any) => state.products.brands);
@@ -19,8 +19,7 @@ const BrandFilterCard = () => {
   };
 
   useEffect(() => {
-    if (checked.length > 0) dispatch(brandFilter(checked));
-    else dispatch(clearFilters());
+    dispatch(filter({ brandFilters: checked }));
     return () => {};
   }, [checked]);
 
@@ -32,7 +31,7 @@ const BrandFilterCard = () => {
           {brands.map((brand, index) => (
             <FormControlLabel
               key={index}
-              control={<Checkbox />}
+              control={<Checkbox checked={checked.includes(brand)} />}
               label={brand}
               onChange={(e, c) => handleCheckboxOnChange(brand, c)}
             />
