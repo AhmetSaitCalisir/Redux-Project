@@ -8,7 +8,7 @@ const ProductCard = (props: IProps) => {
     <div className="product-card">
       <img className="card-image" src={props.product.image} />
       <p className="card-price">{props.product.price}₺</p>
-      <p>{props.product.name}</p>
+      <p className="card-name">{props.product.name}</p>
       <div className="d-grid gap-2">
         <button className="btn btn-primary card-button" type="button">
           Add to Cart

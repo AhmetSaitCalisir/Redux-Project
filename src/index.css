@@ -58,3 +58,12 @@
 
 .card-button {
 }
+
+#root {
+  background-color: whitesmoke;
+  padding-bottom: 200px;
+}
+
+.card-name {
+  height: 50px;
+}
