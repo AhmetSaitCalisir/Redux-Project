@@ -36,23 +36,25 @@ const BasketCardItem = (props: IProps) => {
   };
 
   return (
-    <div className="row">
+    <div className="row basketCard-container">
       <div className="col">
         <p className="basketcard-name">{props.basketProduct.productName}</p>
         <span className="basketcard-price">
           {formatter.format(props.basketProduct.price)}
         </span>
       </div>
-      <div className="col basketCard-quantityContainer">
-        <button className="basketcard-button" onClick={handleDecrease}>
-          -
-        </button>
-        <div className="basketcard-quantity">
-          {props.basketProduct.quantity}
-        </div>
-        <button className="basketcard-button" onClick={handleIncrease}>
-          +
-        </button>
+      <div className="col center">
+        <span className="basketCard-quantityContainer">
+          <button className="basketcard-button" onClick={handleDecrease}>
+            -
+          </button>
+          <div className="basketcard-quantity">
+            {props.basketProduct.quantity}
+          </div>
+          <button className="basketcard-button" onClick={handleIncrease}>
+            +
+          </button>
+        </span>
       </div>
     </div>
   );
