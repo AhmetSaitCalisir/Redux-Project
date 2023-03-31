@@ -16,6 +16,7 @@ const products = createSlice({
     models: [...new Set(productsData.map((product) => product.model))].sort(),
     brandFilters: initialFilters,
     modelFilters: initialFilters,
+    searchFilter: "",
   },
   reducers: {
     clearFilters: (state) => {
@@ -33,6 +34,11 @@ const products = createSlice({
           ? action.payload.modelFilters
           : state.modelFilters;
 
+      state.searchFilter =
+        action.payload.searchFilter != undefined
+          ? action.payload.searchFilter
+          : state.searchFilter;
+
       state.products = productsData.filter((product) => {
         let filtered = true;
         if (state.brandFilters.length > 0) {
@@ -41,6 +47,15 @@ const products = createSlice({
         if (state.modelFilters.length > 0) {
           filtered = filtered && state.modelFilters.includes(product.model);
         }
+
+        if (state.searchFilter.length > 0) {
+          filtered =
+            filtered &&
+            product.name
+              .toLowerCase()
+              .includes(state.searchFilter.toLowerCase());
+        }
+
         return filtered;
       });
       const brandFiltered = productsData.filter((product) => {
