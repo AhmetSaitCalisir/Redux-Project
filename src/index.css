@@ -146,3 +146,8 @@ body {
 .basketCard-container {
   margin-bottom: 5px;
 }
+
+.reduxbrand {
+  min-width: 600px;
+  width: 100%;
+}

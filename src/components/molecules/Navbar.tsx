@@ -11,7 +11,7 @@ const Navbar = () => {
       style={{ backgroundColor: "#2A59FE" }}
     >
       <div className="container">
-        <div>
+        <div className="d-flex reduxbrand">
           <a
             className="navbar-brand"
             href="javascript:void(0)"
