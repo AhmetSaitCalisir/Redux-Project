@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { IProduct } from "../../models/product";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../stores/basket";
 
 type IProps = {
   product: IProduct;
 };
 const ProductCard = (props: IProps) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   return (
     <div className="product-card" onClick={() => navigate(props.product.id)}>
       <img className="card-image" src={props.product.image} />
@@ -17,6 +21,7 @@ const ProductCard = (props: IProps) => {
           type="button"
           onClick={(e) => {
             e.stopPropagation();
+            dispatch(addToBasket(props.product));
           }}
         >
           Add to Cart

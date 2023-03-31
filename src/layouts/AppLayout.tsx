@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/molecules/Navbar";
+import BasketComponents from "../components/organisms/BasketComponents";
 
 const AppLayout = () => {
   return (
@@ -11,7 +12,9 @@ const AppLayout = () => {
           <div className="col">
             <Outlet />
           </div>
-          <div className="col-2">Basket</div>
+          <div className="col-2">
+            <BasketComponents />
+          </div>
         </div>
       </div>
     </Suspense>

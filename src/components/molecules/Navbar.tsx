@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Basket from "../atoms/Basket";
+import NavbarBasket from "../atoms/NavbarBasket";
 import SearchInput from "../atoms/SearchInput";
 import User from "../atoms/User";
 
@@ -38,7 +38,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <div className="flex-center navbar-cards" style={{ color: "white" }}>
-            <Basket />
+            <NavbarBasket />
             <User />
           </div>
         </div>

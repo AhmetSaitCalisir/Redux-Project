@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { IProduct } from "../models/product";
 import { productService } from "../services/product.service";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../stores/basket";
 
 const DetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState<IProduct>({
     brand: "",
     createdAt: "",
@@ -49,9 +52,7 @@ const DetailPage = () => {
             <button
               className="btn btn-primary detail-button"
               type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
+              onClick={(e) => dispatch(addToBasket(product))}
             >
               Add to Cart
             </button>
