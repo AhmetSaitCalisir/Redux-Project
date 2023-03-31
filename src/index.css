@@ -21,6 +21,7 @@
   padding: 10px;
   max-height: 200px;
   overflow: auto;
+  background-color: white;
 }
 .filter-label {
   color: gray;
@@ -98,6 +99,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 1rem 0px;
+  background-color: white;
 }
 
 .basketcard-name {

@@ -40,6 +40,12 @@ const ModelFilterCard = () => {
     }
   };
 
+  useEffect(() => {
+    handleSearch(searchText);
+
+    return () => {};
+  }, [allModels]);
+
   return (
     <>
       <div className="filter-label mt-3">Models</div>
