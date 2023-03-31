@@ -4,10 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { filter } from "../../stores/products";
 
 const BrandFilterCard = () => {
-  const brands: string[] = useSelector((state: any) => state.products.brands);
+  const allBrands: string[] = useSelector(
+    (state: any) => state.products.brands
+  );
   const dispatch = useDispatch();
 
   const [checked, setChecked] = useState<string[]>([]);
+  const [searchText, setSearchText] = useState("");
+  const [brands, setBrands] = useState(allBrands);
 
   const handleCheckboxOnChange = (brand: string, checked: boolean) => {
     if (checked) {
@@ -23,10 +27,31 @@ const BrandFilterCard = () => {
     return () => {};
   }, [checked]);
 
+  const handleSearch = (value: string) => {
+    setSearchText(value);
+    if (value.length > 0) {
+      setBrands(() =>
+        allBrands.filter((brand) =>
+          brand.toLowerCase().includes(value.toLowerCase())
+        )
+      );
+    } else {
+      setBrands(allBrands);
+    }
+  };
+
   return (
     <>
       <div className="filter-label mt-3">Brands</div>
       <div className="filter-card">
+        <input
+          className="form-control search-input"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          value={searchText}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
         <FormGroup>
           {checked.map((brand, index) => (
             <FormControlLabel
